@@ -17,7 +17,6 @@ void Game::Update()
 void Game::Render()
 {
 	SDL_RenderClear(game_renderer);
-	game_visualisation->DrawImage(image_id, game_rect);
 	SDL_RenderPresent(game_renderer);
 }
 
@@ -43,7 +42,6 @@ void Game::Initialise()
 
 	game_visualisation = new Visualisation(game_renderer);
 
-	Render();
 }
 
 void Game::Uninitialise()

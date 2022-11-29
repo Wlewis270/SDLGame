@@ -10,9 +10,6 @@ int main(int argc, char* argv[])
 	{
 		game->Update();
 	}
-	if (game->IsGameRunning() == false)
-	{
-		return 1;
-	}
+	return 1;
 }
 

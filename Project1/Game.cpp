@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Visualisation.h"
 #include "InputManager.h"
+#include "Player.h"
+#include "Entity.h"
 
 Game* Game::s_instance = nullptr;
 
@@ -15,7 +17,7 @@ Game* Game::Get()
 
 	return s_instance;
 }
-}
+
 
 void Game::Update()
 {
@@ -26,11 +28,13 @@ void Game::Update()
 		Uninitialise();
 		SDL_Quit();
 	}
+
 }
 
 void Game::Render()
 {
 	SDL_RenderClear(game_renderer);
+	game_player->Render();
 	SDL_RenderPresent(game_renderer);
 }
 
@@ -53,6 +57,10 @@ void Game::Initialise()
 	game_renderer = SDL_CreateRenderer(game_window, -1, 0);
 
 	game_inputmanager = new InputManager;
+
+	game_player = new Player(game_inputmanager);
+
+	game_player->Initialise();
 }
 
 void Game::Uninitialise()

@@ -3,6 +3,20 @@
 #include "Visualisation.h"
 #include "InputManager.h"
 
+Game* Game::s_instance = nullptr;
+
+Game* Game::Get()
+{
+	if (s_instance == nullptr)
+	{
+		s_instance = new Game;
+		return s_instance;
+	}
+
+	return s_instance;
+}
+}
+
 void Game::Update()
 {
 	game_inputmanager->Update();
@@ -46,4 +60,8 @@ void Game::Uninitialise()
 	SDL_DestroyRenderer(game_renderer);
 	SDL_DestroyWindow(game_window);
 	delete game_visualisation;
+}
+
+Game::Game()
+{
 }

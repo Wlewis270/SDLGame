@@ -4,12 +4,17 @@
 
 int main(int argc, char* argv[])
 {
-	Game* game = new Game();
+	Game* game = Game::Get();
+
 	game->Initialise();
 	while (game->IsGameRunning() == true)
 	{
 		game->Update();
 	}
-	return 1;
+	if (game->IsGameRunning() == false)
+	{
+		return 1;
+	}
+}
 }
 

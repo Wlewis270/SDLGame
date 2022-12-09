@@ -1,8 +1,21 @@
 #include "Visualisation.h"
 #include <SDL.h>
 
+Visualisation* Visualisation::s_instance = nullptr;
+
 Visualisation::Visualisation(SDL_Renderer* renderer) :m_renderer(renderer)
 {
+}
+
+Visualisation* Visualisation::Get()
+{
+	return s_instance;
+}
+
+Visualisation* Visualisation::Initialise(SDL_Renderer* renderer)
+{
+	s_instance = new Visualisation(renderer);
+	return s_instance;
 }
 
 Visualisation::~Visualisation()

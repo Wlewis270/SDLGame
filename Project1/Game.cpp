@@ -22,6 +22,7 @@ Game* Game::Get()
 void Game::Update()
 {
 	game_inputmanager->Update();
+	game_player->Update();
 
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
 	{
@@ -29,11 +30,13 @@ void Game::Update()
 		SDL_Quit();
 	}
 
+	Render();
 }
 
 void Game::Render()
 {
 	SDL_RenderClear(game_renderer);
+	SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 255);
 	game_player->Render();
 	SDL_RenderPresent(game_renderer);
 }
@@ -59,7 +62,7 @@ void Game::Initialise()
 	game_inputmanager = new InputManager;
 
 	game_player = new Player(game_inputmanager);
-
+	game_visualisation->Initialise(game_renderer);
 	game_player->Initialise();
 }
 

@@ -31,8 +31,8 @@ void Player::Initialise()
 void Player::Update()
 {
 
-	int playerX = this->GetLocation()->x;
-	int playerY = this->GetLocation()->y;
+	int playerX = GetLocation()->x;
+	int playerY = GetLocation()->y;
 
 	if (ent_input_manager->GetKeyHeld(SDLK_a))
 	{

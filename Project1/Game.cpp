@@ -60,9 +60,10 @@ void Game::Initialise()
 	game_renderer = SDL_CreateRenderer(game_window, -1, 0);
 
 	game_inputmanager = new InputManager;
+	game_visualisation->Initialise(game_renderer);
 
 	game_player = new Player(game_inputmanager);
-	game_visualisation->Initialise(game_renderer);
+	
 	game_player->Initialise();
 }
 

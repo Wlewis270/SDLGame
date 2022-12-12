@@ -8,8 +8,8 @@ class SDL_Renderer;
 class Entity
 {
 public:
-	std::string Getname();
-	void Initialise();
+	virtual std::string Getname();
+	virtual void Initialise();
 	void Uninitialise();
 	void Render();
 	void Update();

@@ -12,7 +12,7 @@ Player::Player(std::string Name, int maxhp, int attackvalue, InputManager*im):En
 
 std::string Player::Getname()
 {
-    return "Player";
+    return m_name;
 }
 
 void Player::Initialise()

@@ -14,7 +14,7 @@ public:
 	void Render();
 	void Update();
 	SDL_Rect* GetLocation();
-private:
+protected:
 	int image_id;
 	SDL_Rect* ent_rect;
 	Visualisation* ent_visualisation = nullptr;

@@ -16,9 +16,7 @@ public:
 	void Initialise();
 	void Update();
 private:
-	int image_id;
-	SDL_Rect* ent_rect;
-	Visualisation* ent_visualisation = nullptr;
+	
 	InputManager* ent_input_manager;
 	Game* ent_game = nullptr;
 

@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "InputManager.h"
 #include "Game.h"
+#include"Entity.h"
 
 Player::Player(InputManager* im)
 {

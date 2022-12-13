@@ -62,7 +62,7 @@ void Game::Initialise()
 	game_inputmanager = new InputManager;
 	game_visualisation->Initialise(game_renderer);
 
-	game_player = new Player(game_inputmanager);
+	game_player = new Player("Player",100, 5, game_inputmanager);
 	
 	game_player->Initialise();
 }

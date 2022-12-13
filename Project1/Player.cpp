@@ -3,7 +3,7 @@
 #include "SDL.h"
 #include "InputManager.h"
 #include "Game.h"
-#include"Entity.h"
+#include "Entity.h"
 
 Player::Player(std::string Name, int maxhp, int attackvalue, InputManager*im):Entity(Name,maxhp,attackvalue)
 {
@@ -31,7 +31,6 @@ void Player::Initialise()
 
 void Player::Update()
 {
-
 	int playerX = GetLocation()->x;
 	int playerY = GetLocation()->y;
 

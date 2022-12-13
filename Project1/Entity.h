@@ -5,6 +5,7 @@
 
 class Entity : public Object, public HealthInterface
 {
+public:
 	Entity(std::string Name, int maxhp,  int attackvalue);
 	void PerformAttack(Entity* e);
 	std::string GetName();

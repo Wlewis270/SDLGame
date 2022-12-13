@@ -4,6 +4,11 @@
 
 Entity::Entity(std::string Name, int maxhp, int attackvalue)
 {
+	m_name = Name;
+	m_maxhealth = maxhp;
+	m_damage = attackvalue;
+	m_health = m_maxhealth;
+	
 }
 
 void Entity::PerformAttack(Entity* e)
@@ -12,7 +17,7 @@ void Entity::PerformAttack(Entity* e)
 
 std::string Entity::GetName()
 {
-	return std::string();
+	return m_name;
 }
 
 void Entity::TakeDamge()

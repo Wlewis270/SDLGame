@@ -5,7 +5,7 @@
 #include "Game.h"
 #include"Entity.h"
 
-Player::Player(InputManager* im)
+Player::Player(std::string Name, int maxhp, int attackvalue, InputManager*im):Entity(Name,maxhp,attackvalue)
 {
     ent_input_manager = im;
 }

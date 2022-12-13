@@ -11,7 +11,7 @@ class Game;
 class Player : public Entity
 {
 public:
-	Player(InputManager* im);
+	Player(std::string Name, int maxhp, int attackvalue, InputManager* im);
 	std::string Getname();
 	void Initialise();
 	void Update();

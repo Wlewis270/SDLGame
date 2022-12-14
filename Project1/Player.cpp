@@ -21,7 +21,7 @@ void Player::Initialise()
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
 
-    ent_rect->x = 300;
+    ent_rect->x = 500;
     ent_rect->y = 300;
     ent_rect->w = 64;
     ent_rect->h = 64;

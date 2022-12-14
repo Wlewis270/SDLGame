@@ -24,7 +24,7 @@ void Game::Update()
 {
 	game_inputmanager->Update();
 	game_player->Update();
-	game_enemy->Update();
+	game_enemy->Update(game_player);
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
 	{
 		Uninitialise();

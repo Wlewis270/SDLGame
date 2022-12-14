@@ -3,6 +3,7 @@
 #include "Visualisation.h"
 #include "InputManager.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Entity.h"
 
 Game* Game::s_instance = nullptr;
@@ -39,6 +40,7 @@ void Game::Render()
 	SDL_RenderClear(game_renderer);
 	SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 255);
 	game_player->Render();
+	game_enemy->Render();
 	SDL_RenderPresent(game_renderer);
 	SDL_Delay(1000 / 60);
 }
@@ -65,8 +67,9 @@ void Game::Initialise()
 	game_visualisation->Initialise(game_renderer);
 
 	game_player = new Player("Player",100, 5, game_inputmanager);
-	
+	game_enemy = new Enemy("Enemy", 100, 5);
 	game_player->Initialise();
+	game_enemy->Initialise();
 }
 
 void Game::Uninitialise()

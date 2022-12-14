@@ -2,18 +2,16 @@
 #include "Entity.h"
 #include <string>
 
-class InputManager;
 class Game;
 
-class Player : public Entity
+class Enemy : public Entity
 {
 public:
-	Player(std::string Name, int maxhp, int attackvalue, InputManager* im);
+	Enemy(std::string Name, int maxhp, int attackvalue);
 	std::string Getname();
 	void Initialise();
 	void Update();
 private:
-	InputManager* ent_input_manager;
 	Game* ent_game = nullptr;
 };
 

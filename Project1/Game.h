@@ -6,6 +6,7 @@ class SDL_Window;
 class SDL_Renderer;
 class SDL_Rect;
 class Player;
+class Enemy;
 
 class Game
 {
@@ -27,6 +28,7 @@ private:
 	InputManager* game_inputmanager;
 	Visualisation* game_visualisation;
 	Player* game_player;
+	Enemy* game_enemy;
 	SDL_Rect* game_rect;
 	int image_id;
 };

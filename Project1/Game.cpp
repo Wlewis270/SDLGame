@@ -31,11 +31,6 @@ void Game::Update()
 		SDL_Quit();
 	}
 
-	if (CheckCollisions(game_player) == "Enemy")
-	{
-		SDL_SetRenderDrawColor(game_renderer, 255, 0, 0, 255);
-	}
-
 	Render();
 
 }

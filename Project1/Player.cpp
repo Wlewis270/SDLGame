@@ -32,7 +32,6 @@ void Player::Initialise()
 void Player::Update()
 {
 	int playerX = GetLocation()->x;
-	int playerY = GetLocation()->y;
 
 	if (ent_input_manager->GetKeyHeld(SDLK_d))
 	{
@@ -42,5 +41,20 @@ void Player::Update()
 	if (ent_input_manager->GetKeyHeld(SDLK_a))
 	{
 		ent_rect->x = ent_rect->x - 5;
+	}
+
+	std::string player_collision = ent_game->CheckCollisions(this);
+
+	if (player_collision == "Enemy")
+	{
+		if (ent_rect->x = playerX + 5)
+		{
+			ent_rect->x = ent_rect->x + 10;
+		}
+
+		if (ent_rect->x = playerX - 5)
+		{
+			ent_rect->x = ent_rect->x - 10;
+		}
 	}
 }

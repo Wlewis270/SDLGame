@@ -79,7 +79,7 @@ void Game::Uninitialise()
 	delete game_visualisation;
 }
 
-std::string Game::CheckCollisions(Entity* ent)
+Entity* Game::CheckCollisions(Entity* ent)
 {
 	bool collision_checked = false;
 	
@@ -87,9 +87,9 @@ std::string Game::CheckCollisions(Entity* ent)
 	{
 		if (TestBlockCollision(ent, game_enemy))
 		{
-			return game_enemy->GetName();
+			return game_enemy;
 		}
-		return "";
+		return nullptr;
 	}
 }
 

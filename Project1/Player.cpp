@@ -43,18 +43,18 @@ void Player::Update()
 		ent_rect->x = ent_rect->x - 5;
 	}
 
-	std::string player_collision = ent_game->CheckCollisions(this);
+	Entity* player_collision = ent_game->CheckCollisions(this);
 
-	if (player_collision == "Enemy")
+	if (player_collision != nullptr)
 	{
-		if (ent_rect->x = playerX + 5)
-		{
-			ent_rect->x = ent_rect->x + 10;
-		}
-
-		if (ent_rect->x = playerX - 5)
+		if (ent_rect->x < player_collision->GetLocation()->x)
 		{
 			ent_rect->x = ent_rect->x - 10;
+		}
+
+		if (ent_rect->x > player_collision->GetLocation()->x)
+		{
+			ent_rect->x = ent_rect->x + 10;
 		}
 	}
 }

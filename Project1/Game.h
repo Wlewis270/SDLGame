@@ -18,7 +18,7 @@ public:
 	bool IsGameRunning();
 	void Initialise();
 	void Uninitialise();
-	std::string CheckCollisions(Entity* ent);
+	Entity* CheckCollisions(Entity* ent);
 	bool TestBlockCollision(Entity* ent, Entity* ent2);
 
 private:

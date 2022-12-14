@@ -40,11 +40,13 @@ void InputManager::Update()
 		{
 			KEYS[temp_event.key.keysym.scancode] = 1;
 			key_down.push_back(temp_event.key.keysym.sym);
+			break;
 		}
 		case SDL_KEYUP:
 		{
 			KEYS[temp_event.key.keysym.scancode] = 0;
 			key_up.push_back(temp_event.key.keysym.sym);
+			break;
 		}
 		}
 	}

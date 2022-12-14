@@ -31,6 +31,7 @@ void Game::Update()
 	}
 
 	Render();
+
 }
 
 void Game::Render()
@@ -39,6 +40,7 @@ void Game::Render()
 	SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 255);
 	game_player->Render();
 	SDL_RenderPresent(game_renderer);
+	SDL_Delay(1000 / 60);
 }
 
 bool Game::IsGameRunning()

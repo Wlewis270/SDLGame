@@ -31,6 +31,11 @@ void Game::Update()
 		SDL_Quit();
 	}
 
+	if (CheckCollisions(game_player) == "Enemy")
+	{
+		SDL_SetRenderDrawColor(game_renderer, 255, 0, 0, 255);
+	}
+
 	Render();
 
 }
@@ -77,6 +82,58 @@ void Game::Uninitialise()
 	SDL_DestroyRenderer(game_renderer);
 	SDL_DestroyWindow(game_window);
 	delete game_visualisation;
+}
+
+std::string Game::CheckCollisions(Entity* ent)
+{
+	bool collision_checked = false;
+	
+	while (collision_checked == false)
+	{
+		if (TestBlockCollision(ent, game_enemy))
+		{
+			return game_enemy->GetName();
+		}
+		return "";
+	}
+}
+
+bool Game::TestBlockCollision(Entity* ent, Entity* ent2)
+{
+	Ent_rect = ent->GetLocation();
+	Ent_rect2 = ent2->GetLocation();
+
+	int EntminX = Ent_rect->x;
+	int EntminY = Ent_rect->y;
+	int EntmaxX = Ent_rect->x + Ent_rect->w;
+	int EntmaxY = Ent_rect->y + Ent_rect->h;
+
+	int Ent2minX = Ent_rect2->x;
+	int Ent2minY = Ent_rect2->y;
+	int Ent2maxX = Ent_rect2->x + Ent_rect2->w;
+	int Ent2maxY = Ent_rect2->y + Ent_rect2->h;
+
+	if (EntminY > Ent2maxY)
+	{
+		return false;
+	}
+
+	if (EntmaxY < Ent2minY)
+	{
+		return false;
+	}
+
+	if (Ent2minX > EntmaxX)
+	{
+		return false;
+	}
+
+	if (Ent2maxX < EntminX)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 Game::Game()

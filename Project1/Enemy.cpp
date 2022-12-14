@@ -31,4 +31,5 @@ void Enemy::Initialise()
 
 void Enemy::Update()
 {
+    ent_rect->x = ent_rect->x - 1;
 }

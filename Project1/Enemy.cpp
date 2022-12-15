@@ -22,7 +22,7 @@ void Enemy::Initialise()
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
 
-    ent_rect->x = 1000;
+    ent_rect->x = 100;
     ent_rect->y = 300;
     ent_rect->w = 64;
     ent_rect->h = 64;

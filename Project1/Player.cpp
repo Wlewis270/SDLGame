@@ -56,6 +56,7 @@ void Player::Update()
 		if (ent_bullet->Collision())
 		{
 			delete ent_bullet;
+			bullet_deleted = true;
 		}
 	}
 	
@@ -82,5 +83,6 @@ void Player::CreateBullet()
 	{
 		bullet_deleted = false;
 		ent_bullet = new Bullet(this);
+		ent_bullet->Initialise();
 	}
 }

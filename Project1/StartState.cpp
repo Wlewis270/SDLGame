@@ -9,11 +9,13 @@ void StartState::Update()
 	start_inputmanager->Update();
 	if (start_inputmanager->GetKeyDown(SDLK_s))
 	{
-		m_statemanager->SetState(GAME);
+		m_stateManager->SetState(GAME);
 	}
 
 	Render();
 }
+
+
 
 void StartState::Render()
 {
@@ -53,4 +55,8 @@ void StartState::Uninitialise()
 	SDL_DestroyRenderer(start_renderer);
 	SDL_DestroyWindow(start_window);
 	delete start_visualisation;
+}
+
+void StartState::Update()
+{
 }

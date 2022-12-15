@@ -1,5 +1,5 @@
 #pragma once
-#include "iState.h"
+#include "State.h"
 #include <string>
 #include <vector>
 class InputManager;
@@ -11,16 +11,16 @@ class Player;
 class Enemy;
 class Object;
 
-class Game: public iState
+class Game: public State
 {
 public:
 	
 	static Game* Get();
-	virtual void Update() override;
-	virtual void Render() override;
+	 void Update();
+	 void Render() ;
 	bool IsGameRunning();
-	virtual void Initialise() override;
-	virtual void Uninitialise() override;
+	 void Initialise() ;
+	 void Uninitialise();
 	Object* CheckCollisions(Object* ent);
 	bool TestBlockCollision(Object* ent, Object* ent2);
 	void SpawnEnemy(Enemy* enemy);

@@ -25,10 +25,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="HealthInterface.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="iState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="StartState.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Visualisation.h" />
   </ItemGroup>

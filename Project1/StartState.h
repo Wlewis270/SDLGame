@@ -1,5 +1,7 @@
 #pragma once
-#include "iState.h"
+#include"State.h"
+
+
 
 class InputManager;
 class Visualisation;
@@ -7,14 +9,14 @@ class SDL_Window;
 class SDL_Renderer;
 class SDL_Rect;
 
-class StartState: public iState
+class StartState
 {
 public:
+	 void Update() ;
+	 void Render();
+	void Initialise() ;
+	 void Uninitialise() ;
 	
-	virtual void Update() override;
-	virtual void Render() override;
-	virtual void Initialise() override;
-	virtual void Uninitialise() override;
 private:
 	SDL_Window* start_window;
 	SDL_Renderer* start_renderer;
@@ -22,5 +24,7 @@ private:
 	Visualisation* start_visualisation;
 	SDL_Rect* start_rect;
 	int image_id;
+
+	
 };
 

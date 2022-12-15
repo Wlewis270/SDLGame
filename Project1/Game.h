@@ -1,6 +1,7 @@
 #pragma once
 #include "iState.h"
 #include <string>
+#include <vector>
 class InputManager;
 class Visualisation;
 class SDL_Window;
@@ -23,6 +24,7 @@ public:
 	Object* CheckCollisions(Object* ent);
 	bool TestBlockCollision(Object* ent, Object* ent2);
 	void SpawnEnemy(Enemy* enemy);
+	bool EnemyOnScreen();
 
 private:
 	Game();
@@ -36,10 +38,11 @@ private:
 	Player* game_player;
 	Enemy* game_left_enemy[4];
 	Enemy* game_right_enemy[4];
+	std::vector<Enemy*> game_enemies;
 	SDL_Rect* game_rect;
 	SDL_Rect* Ent_rect;
 	SDL_Rect* Ent_rect2;
 	int image_id;
-	int enemies_on_screen;
+	bool enemies_on_screen;
 };
 

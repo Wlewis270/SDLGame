@@ -7,6 +7,7 @@
 #include "Bullet.h"
 #include "Entity.h"
 #include "Object.h"
+#include <vector>
 
 Game* Game::s_instance = nullptr;
 
@@ -27,7 +28,14 @@ void Game::Update()
 	game_inputmanager->Update();
 	game_player->Update();
 	
+	if (EnemyOnScreen() == false)
+	{
+		game_enemies.push_back(game_left_enemy[0]);
+		game_enemies.push_back(game_right_enemy[0]);
 
+		game_enemies[0]->Initialise();
+		game_enemies[1]->Initialise();
+	}
 
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
 	{
@@ -94,10 +102,13 @@ Object* Game::CheckCollisions(Object* ent)
 	
 	while (collision_checked == false)
 	{
-		if (TestBlockCollision(ent, game_enemy))
-		{
-			return game_enemy;
+		for (int i = 0; i < 4; i++) {
+			if (TestBlockCollision(ent, game_enemies[i]))
+			{
+				return game_enemies[i];
+			}
 		}
+
 		if (ent != game_player)
 		{
 			if (TestBlockCollision(ent, game_player))
@@ -151,6 +162,11 @@ bool Game::TestBlockCollision(Object* ent, Object* ent2)
 void Game::SpawnEnemy(Enemy* enemy)
 {
 	enemy->Initialise();
+}
+
+bool Game::EnemyOnScreen()
+{
+	return false;
 }
 
 Game::Game()

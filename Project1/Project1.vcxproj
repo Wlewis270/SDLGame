@@ -29,6 +29,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="StartState.h" />
+    <ClInclude Include="StateManager.h" />
     <ClInclude Include="Visualisation.h" />
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +42,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StartState.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Visualisation.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

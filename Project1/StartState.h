@@ -8,6 +8,7 @@ class SDL_Rect;
 class StartState: public iState
 {
 public:
+	
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void Initialise() override;

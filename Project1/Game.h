@@ -13,6 +13,7 @@ class Object;
 class Game: public iState
 {
 public:
+	
 	static Game* Get();
 	virtual void Update() override;
 	virtual void Render() override;

@@ -14,6 +14,7 @@ public:
 	void Initialise();
 	void Update();
 	void CreateBullet();
+	void Render();
 private:
 	InputManager* ent_input_manager;
 	Game* ent_game = nullptr;

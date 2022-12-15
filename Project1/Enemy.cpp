@@ -6,9 +6,9 @@
 #include "Entity.h"
 #include "Player.h"
 
-Enemy::Enemy(std::string Name, int maxhp, int attackvalue):Entity(Name, maxhp, attackvalue)
+Enemy::Enemy(std::string Name, int maxhp, int attackvalue,int pos):Entity(Name, maxhp, attackvalue)
 {
-  
+    ent_pos = pos;
 }
 
 std::string Enemy::Getname()
@@ -22,7 +22,7 @@ void Enemy::Initialise()
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
 
-    ent_rect->x = 100;
+    ent_rect->x = ent_pos;
     ent_rect->y = 300;
     ent_rect->w = 64;
     ent_rect->h = 64;

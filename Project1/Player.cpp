@@ -53,6 +53,8 @@ void Player::Update()
 	
 	if (bullet_deleted == false)
 	{
+		ent_bullet->Update();
+
 		if (ent_bullet->Collision())
 		{
 			delete ent_bullet;
@@ -84,5 +86,14 @@ void Player::CreateBullet()
 		bullet_deleted = false;
 		ent_bullet = new Bullet(this);
 		ent_bullet->Initialise();
+	}
+}
+
+void Player::Render()
+{
+	ent_visualisation->DrawImage(image_id, ent_rect);
+	if (bullet_deleted == false)
+	{
+		ent_bullet->Render();
 	}
 }

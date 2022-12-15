@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "InputManager.h"
 #include "Game.h"
+#include "Bullet.h"
 #include "Entity.h"
 
 Player::Player(std::string Name, int maxhp, int attackvalue, InputManager*im):Entity(Name,maxhp,attackvalue)
@@ -27,6 +28,8 @@ void Player::Initialise()
     ent_rect->h = 64;
 
     image_id = ent_visualisation->AddImage(".\\bitmaps\\player.bmp");
+
+	bullet_deleted = true;
 }
 
 void Player::Update()
@@ -43,9 +46,25 @@ void Player::Update()
 		ent_rect->x = ent_rect->x - 5;
 	}
 
-	Entity* player_collision = ent_game->CheckCollisions(this);
+	if (ent_input_manager->GetKeyHeld(SDLK_SPACE))
+	{
+		bullet_deleted = false;
+		ent_bullet = new Bullet(this);
+	}
 
-	if (player_collision != nullptr)
+	Object* player_collision = ent_game->CheckCollisions(ent_bullet);
+	
+	if (bullet_deleted == false)
+	{
+		if (player_collision != nullptr || player_collision != this)
+		{
+			delete ent_bullet;
+		}
+	}
+	
+	player_collision = ent_game->CheckCollisions(this);
+
+	if (player_collision != nullptr || player_collision != ent_bullet)
 	{
 		if (ent_rect->x < player_collision->GetLocation()->x)
 		{

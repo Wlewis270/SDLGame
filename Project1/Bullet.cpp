@@ -3,9 +3,16 @@
 #include "SDL.h"
 #include "Game.h"
 #include "Entity.h"
+#include"Player.h"
 
-Bullet::Bullet(Entity* player)
+Bullet::Bullet(Player* player)
 {
+    ent_player = player;
+}
+
+Bullet::~Bullet()
+{
+    delete ent_rect;
 }
 
 std::string Bullet::Getname()
@@ -18,13 +25,16 @@ void Bullet::Initialise()
     ent_visualisation = Visualisation::Get();
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
+    
+    ent_rect = ent_player->GetLocation();
+    ent_rect->h = 25;
+    ent_rect->w = 25;
 
-    ent_rect->x = 500;
-    ent_rect->y = 300;
-    ent_rect->w = 64;
-    ent_rect->h = 64;
+    image_id = ent_visualisation->AddImage(".\\bitmaps\\bullet.bmp");
 }
 
 void Bullet::Update()
 {
+    ent_rect->x = ent_rect->x + 6;
 }
+

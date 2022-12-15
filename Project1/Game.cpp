@@ -79,7 +79,7 @@ void Game::Uninitialise()
 	delete game_visualisation;
 }
 
-Entity* Game::CheckCollisions(Entity* ent)
+Object* Game::CheckCollisions(Object* ent)
 {
 	bool collision_checked = false;
 	
@@ -93,7 +93,7 @@ Entity* Game::CheckCollisions(Entity* ent)
 	}
 }
 
-bool Game::TestBlockCollision(Entity* ent, Entity* ent2)
+bool Game::TestBlockCollision(Object* ent, Object* ent2)
 {
 	Ent_rect = ent->GetLocation();
 	Ent_rect2 = ent2->GetLocation();

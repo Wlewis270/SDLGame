@@ -7,7 +7,7 @@ class SDL_Renderer;
 class SDL_Rect;
 class Player;
 class Enemy;
-class Entity;
+class Object;
 
 class Game
 {
@@ -18,8 +18,8 @@ public:
 	bool IsGameRunning();
 	void Initialise();
 	void Uninitialise();
-	Entity* CheckCollisions(Entity* ent);
-	bool TestBlockCollision(Entity* ent, Entity* ent2);
+	Object* CheckCollisions(Object* ent);
+	bool TestBlockCollision(Object* ent, Object* ent2);
 
 private:
 	Game();

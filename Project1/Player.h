@@ -4,6 +4,7 @@
 
 class InputManager;
 class Game;
+class Bullet;
 
 class Player : public Entity
 {
@@ -15,5 +16,7 @@ public:
 private:
 	InputManager* ent_input_manager;
 	Game* ent_game = nullptr;
+	Bullet* ent_bullet;
+	bool bullet_deleted;
 };
 

@@ -39,3 +39,9 @@ void Bullet::Update()
     ent_rect->x = ent_rect->x + 6;
 }
 
+bool Bullet::Collision()
+{
+    Object* bullet_collision = ent_game->CheckCollisions(this);
+    return bullet_collision != nullptr && bullet_collision != ent_player;
+}
+

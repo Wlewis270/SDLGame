@@ -12,6 +12,7 @@ public:
 	std::string Getname();
 	void Initialise();
 	void Update();
+	bool Collision();
 private:
 	Game* ent_game = nullptr;
 	Player* ent_player;

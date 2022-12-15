@@ -46,39 +46,41 @@ void Player::Update()
 		ent_rect->x = ent_rect->x - 5;
 	}
 
-	if (ent_input_manager->GetKeyHeld(SDLK_SPACE) && bullet_deleted == true)
+	if (ent_input_manager->GetKeyDown(SDLK_SPACE))
 	{
-		bullet_deleted = false;
-		ent_bullet = new Bullet(this);
+		CreateBullet();
 	}
 	
 	if (bullet_deleted == false)
 	{
-		Object* bullet_collision = ent_game->CheckCollisions(ent_bullet);
-
-		if (bullet_collision != nullptr && bullet_collision != this)
+		if (ent_bullet->Collision())
 		{
 			delete ent_bullet;
-			bullet_deleted = true;
 		}
 	}
 	
 	Object* player_collision = ent_game->CheckCollisions(this);
-
-	if (bullet_deleted == true)
+	
+	if (player_collision != nullptr)
 	{
-		if (player_collision != nullptr)
+		if (ent_rect->x < player_collision->GetLocation()->x)
 		{
-			if (ent_rect->x < player_collision->GetLocation()->x)
-			{
-				ent_rect->x = ent_rect->x - 10;
-			}
+			ent_rect->x = ent_rect->x - 10;
+		}
 
-			if (ent_rect->x > player_collision->GetLocation()->x)
-			{
-				ent_rect->x = ent_rect->x + 10;
-			}
+		if (ent_rect->x > player_collision->GetLocation()->x)
+		{
+			ent_rect->x = ent_rect->x + 10;
 		}
 	}
 	
+}
+
+void Player::CreateBullet()
+{
+	if (bullet_deleted == true)
+	{
+		bullet_deleted = false;
+		ent_bullet = new Bullet(this);
+	}
 }

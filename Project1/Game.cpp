@@ -26,7 +26,9 @@ void Game::Update()
 {
 	game_inputmanager->Update();
 	game_player->Update();
-	game_enemy->Update(game_player);
+	
+
+
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
 	{
 		Uninitialise();
@@ -42,7 +44,7 @@ void Game::Render()
 	SDL_RenderClear(game_renderer);
 	SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 255);
 	game_player->Render();
-	game_enemy->Render();
+
 	SDL_RenderPresent(game_renderer);
 	SDL_Delay(1000 / 60);
 }
@@ -68,10 +70,15 @@ void Game::Initialise()
 	game_inputmanager = new InputManager;
 	game_visualisation->Initialise(game_renderer);
 
+	for (int i = 0; i < 4; i++) {
+		game_left_enemy[i] = new Enemy("Enemy", 100, 5, 0);
+	}
+	for (int i = 0; i < 4; i++) {
+		game_right_enemy[i] = new Enemy("Enemy", 100, 5, 1280);
+	}
+
 	game_player = new Player("Player",100, 5, game_inputmanager);
-	game_enemy = new Enemy("Enemy", 100, 5);
 	game_player->Initialise();
-	game_enemy->Initialise();
 }
 
 void Game::Uninitialise()
@@ -139,6 +146,11 @@ bool Game::TestBlockCollision(Object* ent, Object* ent2)
 	}
 
 	return true;
+}
+
+void Game::SpawnEnemy(Enemy* enemy)
+{
+	enemy->Initialise();
 }
 
 Game::Game()

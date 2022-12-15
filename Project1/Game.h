@@ -21,6 +21,7 @@ public:
 	virtual void Uninitialise() override;
 	Object* CheckCollisions(Object* ent);
 	bool TestBlockCollision(Object* ent, Object* ent2);
+	void SpawnEnemy(Enemy* enemy);
 
 private:
 	Game();
@@ -32,10 +33,12 @@ private:
 	InputManager* game_inputmanager;
 	Visualisation* game_visualisation;
 	Player* game_player;
-	Enemy* game_enemy;
+	Enemy* game_left_enemy[4];
+	Enemy* game_right_enemy[4];
 	SDL_Rect* game_rect;
 	SDL_Rect* Ent_rect;
 	SDL_Rect* Ent_rect2;
 	int image_id;
+	int enemies_on_screen;
 };
 

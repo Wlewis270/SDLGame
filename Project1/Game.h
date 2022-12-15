@@ -1,4 +1,5 @@
 #pragma once
+#include "iState.h"
 #include <string>
 class InputManager;
 class Visualisation;
@@ -9,15 +10,15 @@ class Player;
 class Enemy;
 class Object;
 
-class Game
+class Game: public iState
 {
 public:
 	static Game* Get();
-	void Update();
-	void Render();
+	virtual void Update() override;
+	virtual void Render() override;
 	bool IsGameRunning();
-	void Initialise();
-	void Uninitialise();
+	virtual void Initialise() override;
+	virtual void Uninitialise() override;
 	Object* CheckCollisions(Object* ent);
 	bool TestBlockCollision(Object* ent, Object* ent2);
 

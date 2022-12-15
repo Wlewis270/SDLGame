@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "Game.h"
 #include "Entity.h"
+#include "Object.h"
 #include"Player.h"
 
 Bullet::Bullet(Player* player)

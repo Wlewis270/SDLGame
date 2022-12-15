@@ -4,7 +4,9 @@
 #include "InputManager.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Bullet.h"
 #include "Entity.h"
+#include "Object.h"
 
 Game* Game::s_instance = nullptr;
 
@@ -89,6 +91,14 @@ Object* Game::CheckCollisions(Object* ent)
 		{
 			return game_enemy;
 		}
+		if (ent != game_player)
+		{
+			if (TestBlockCollision(ent, game_player))
+			{
+				return game_player;
+			}
+		}
+		
 		return nullptr;
 	}
 }

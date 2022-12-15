@@ -21,7 +21,6 @@ void Player::Initialise()
     ent_visualisation = Visualisation::Get();
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
-	ent_bullet = new Bullet(this);
 
     ent_rect->x = 500;
     ent_rect->y = 300;
@@ -51,32 +50,35 @@ void Player::Update()
 	{
 		bullet_deleted = false;
 		ent_bullet = new Bullet(this);
-		ent_bullet->Render();
 	}
-
-	Object* player_collision = ent_game->CheckCollisions(ent_bullet);
 	
 	if (bullet_deleted == false)
 	{
-		if (player_collision != nullptr && player_collision != this)
+		Object* bullet_collision = ent_game->CheckCollisions(ent_bullet);
+
+		if (bullet_collision != nullptr && bullet_collision != this)
 		{
 			delete ent_bullet;
 			bullet_deleted = true;
 		}
 	}
 	
-	player_collision = ent_game->CheckCollisions(this);
+	Object* player_collision = ent_game->CheckCollisions(this);
 
-	if (player_collision != nullptr && player_collision != ent_bullet)
+	if (bullet_deleted == true)
 	{
-		if (ent_rect->x < player_collision->GetLocation()->x)
+		if (player_collision != nullptr)
 		{
-			ent_rect->x = ent_rect->x - 10;
-		}
+			if (ent_rect->x < player_collision->GetLocation()->x)
+			{
+				ent_rect->x = ent_rect->x - 10;
+			}
 
-		if (ent_rect->x > player_collision->GetLocation()->x)
-		{
-			ent_rect->x = ent_rect->x + 10;
+			if (ent_rect->x > player_collision->GetLocation()->x)
+			{
+				ent_rect->x = ent_rect->x + 10;
+			}
 		}
 	}
+	
 }

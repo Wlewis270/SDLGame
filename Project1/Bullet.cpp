@@ -27,7 +27,8 @@ void Bullet::Initialise()
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
     
-    ent_rect = ent_player->GetLocation();
+    ent_rect->x = ent_player->GetLocation()->x;
+    ent_rect->y = ent_player->GetLocation()->y;
     ent_rect->h = 25;
     ent_rect->w = 25;
 

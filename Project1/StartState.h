@@ -1,10 +1,12 @@
 #pragma once
 #include "iState.h"
+
 class InputManager;
 class Visualisation;
 class SDL_Window;
 class SDL_Renderer;
 class SDL_Rect;
+
 class StartState: public iState
 {
 public:

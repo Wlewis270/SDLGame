@@ -3,10 +3,18 @@
 #include"Game.h"
 
 
+StateManager::StateManager()
+{
+	m_currentState = m_States[START];
+
+
+}
+
 void StateManager::Initialise()
 {
-	m_States[START] = new StartState;
+	m_States[START] =new StartState;
 	m_States[GAME] =  Game::Get();
+	
 }
 
 void StateManager::SetState( States st)

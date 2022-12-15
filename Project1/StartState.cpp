@@ -2,13 +2,14 @@
 #include <iostream>
 #include "Visualisation.h"
 #include "InputManager.h"
+#include"StateManager.h"
 
 void StartState::Update()
 {
 	start_inputmanager->Update();
 	if (start_inputmanager->GetKeyDown(SDLK_s))
 	{
-		
+		m_statemanager->SetState(GAME);
 	}
 
 	Render();

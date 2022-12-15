@@ -1,9 +1,12 @@
 #include <SDL.h>
 #include "Game.h"
+#include"StartState.h"
+#include"StateManager.h"
 
 
 int main(int argc, char* argv[])
 {
+
 	Game* game = Game::Get();
 
 	game->Initialise();

@@ -11,13 +11,19 @@
 
 Game* Game::s_instance = nullptr;
 
-Game* Game::Get()
+Game* Game::init(StateManager* stateManager)
 {
 	if (s_instance == nullptr)
 	{
-		s_instance = new Game;
+		s_instance = new Game(stateManager);
 		return s_instance;
 	}
+	return s_instance;
+}
+
+Game* Game::Get()
+{
+	
 
 	return s_instance;
 }
@@ -43,7 +49,7 @@ void Game::Update()
 		SDL_Quit();
 	}
 
-	Render();
+	
 
 }
 
@@ -102,7 +108,7 @@ Object* Game::CheckCollisions(Object* ent)
 	
 	while (collision_checked == false)
 	{
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < game_enemies.size(); i++) {
 			if (TestBlockCollision(ent, game_enemies[i]))
 			{
 				return game_enemies[i];
@@ -169,6 +175,6 @@ bool Game::EnemyOnScreen()
 	return false;
 }
 
-Game::Game()
+Game::Game(StateManager* stateManager) :State(stateManager)
 {
 }

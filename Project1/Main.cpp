@@ -5,17 +5,20 @@
 int main(int argc, char* argv[])
 {
 	StateManager statestuf;
-	Game* game = Game::Get();
-
-	game->Initialise();
-	while (game->IsGameRunning() == true)
+	
+	statestuf.Initialise();
+	
+	
+	while (1)
 	{
-		game->Update();
+		statestuf.update();
+		statestuf.render();
 	}
-	if (game->IsGameRunning() == false)
+	
+	/*if (game->IsGameRunning() == false)
 	{
 		return 1;
-	}
+	}*/
 }
 
 

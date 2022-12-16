@@ -17,7 +17,7 @@ class SDL_Rect;
 class StartState:public State
 {
 public:
-	StartState();
+	StartState(StateManager* stateManager);
 	~StartState();
 	void Update()  ;
 	 void Render();

@@ -5,22 +5,25 @@
 
 StateManager::StateManager()
 {
-	m_currentState = m_States[START];
+	
 
 
 }
 
 void StateManager::Initialise()
 {
-	m_States[START] = new StartState;
-	m_States[GAME] =  Game::Get();
-	
+	m_States[START] = new StartState(this);
+	m_States[GAME] =  Game::init(this);
+	SetState(START);
 }
 
 void StateManager::SetState( States st)
 {
-	m_currentState->Uninitialise();
+	if (m_currentState != nullptr) {
+		m_currentState->Uninitialise();
+	}
 	m_currentState = m_States[st];
+	
 	m_currentState->Initialise();
 }
 

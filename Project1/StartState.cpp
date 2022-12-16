@@ -4,7 +4,8 @@
 #include "InputManager.h"
 #include"StateManager.h"
 
-StartState::StartState()
+StartState::StartState(StateManager *stateManager):State(stateManager)
+
 {
 
 }
@@ -21,7 +22,7 @@ void StartState::Update()
 		m_stateManager->SetState(GAME);
 	}
 
-	Render();
+	
 }
 
 
@@ -49,7 +50,7 @@ void StartState::Initialise()
 	start_renderer = SDL_CreateRenderer(start_window, -1, 0);
 
 	start_inputmanager = new InputManager;
-	start_visualisation->Initialise(start_renderer);
+	start_visualisation = Visualisation::Initialise(start_renderer);
 	image_id = start_visualisation->AddImage(".\\bitmaps\\start.bmp");
 	start_rect = new SDL_Rect();
 	start_rect->x = 640;

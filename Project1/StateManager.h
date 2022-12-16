@@ -15,5 +15,5 @@ public:
 private:
 
 	State* m_States[2];
-	State* m_currentState=nullptr;
+	State* m_currentState;
 };

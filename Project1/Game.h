@@ -14,7 +14,7 @@ class Object;
 class Game: public State
 {
 public:
-	
+	static Game* init(StateManager* stateManager);
 	static Game* Get();
 	 void Update();
 	 void Render() ;
@@ -27,7 +27,7 @@ public:
 	bool EnemyOnScreen();
 
 private:
-	Game();
+	Game(StateManager* stateManager);
 	Game(const Game&) = delete;
 	static Game* s_instance;
 

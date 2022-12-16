@@ -7,8 +7,8 @@ class StateManager;
 class State
 {
 public:
-	State() {
-		
+	State(StateManager * m_sta) {
+		m_stateManager = m_sta;
 	}
 	 ~State(){}
 	 virtual void Update() = 0;

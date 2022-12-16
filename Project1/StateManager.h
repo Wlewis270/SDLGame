@@ -1,9 +1,8 @@
 #pragma once
 #include"State.h"
-#include"StartState.h" 
+
 enum States { START, GAME };
-class StateManager
-{
+class StateManager{
 
 public:
 	StateManager();
@@ -18,4 +17,3 @@ private:
 	State* m_States[2];
 	State* m_currentState=nullptr;
 };
-

@@ -4,6 +4,15 @@
 #include "InputManager.h"
 #include"StateManager.h"
 
+StartState::StartState()
+{
+
+}
+
+StartState::~StartState()
+{
+}
+
 void StartState::Update()
 {
 	start_inputmanager->Update();

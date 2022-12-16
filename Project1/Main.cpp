@@ -2,11 +2,9 @@
 #include "Game.h"
 #include"StartState.h"
 #include"StateManager.h"
-
-
 int main(int argc, char* argv[])
 {
-
+	StateManager statestuf;
 	Game* game = Game::Get();
 
 	game->Initialise();

@@ -66,6 +66,4 @@ void StartState::Uninitialise()
 	delete start_visualisation;
 }
 
-void StartState::Update()
-{
-}
+

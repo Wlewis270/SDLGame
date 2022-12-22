@@ -15,14 +15,10 @@ Game* Game::init(StateManager* stateManager)
 {
 	if (s_instance == nullptr)
 	{
-		s_instance = new Game(stateManager);
+		s_instance = new Game;
 		return s_instance;
 	}
-	return s_instance;
-}
 
-Game* Game::Get()
-{
 	return s_instance;
 }
 
@@ -46,6 +42,9 @@ void Game::Update()
 		Uninitialise();
 		SDL_Quit();
 	}
+
+	Render();
+
 }
 
 void Game::Render()

@@ -52,7 +52,7 @@ void Score::Initialise()
 	Score_rect->y = 30; // controls the rect's y coordinte
 	Score_rect->w = 100; // controls the width of the rect
 	Score_rect->h = 100; // controls the height of the rect
-}
+ }
 
 void Score::Uninitialise()
 {

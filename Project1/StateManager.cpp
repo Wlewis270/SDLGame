@@ -1,6 +1,7 @@
 #include "StateManager.h"
 #include "StartState.h"
 #include"Game.h"
+#include "GameOverState.h"
 
 
 StateManager::StateManager()
@@ -14,6 +15,7 @@ void StateManager::Initialise()
 {
 	m_States[START] = new StartState(this);
 	m_States[GAME] =  Game::init(this);
+	m_States[GAMEOVER] = new GameOverState(this);
 	SetState(START);
 }
 

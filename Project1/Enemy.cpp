@@ -16,6 +16,11 @@ std::string Enemy::Getname()
 	return "Enemy";
 }
 
+void Enemy::SetPos(int pos)
+{
+    ent_rect->x = pos;
+}
+
 void Enemy::Initialise()
 {
     ent_visualisation = Visualisation::Get();
@@ -40,4 +45,9 @@ void Enemy::Update(Player* player)
     {
         ent_rect->x = ent_rect->x + 1;
     }
+}
+
+void Enemy::DeleteEnemy()
+{
+    delete this;
 }

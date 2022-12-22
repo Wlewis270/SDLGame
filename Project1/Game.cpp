@@ -15,7 +15,7 @@ Game* Game::init(StateManager* stateManager)
 {
 	if (s_instance == nullptr)
 	{
-		s_instance = new Game;
+		s_instance = new Game(stateManager);
 		return s_instance;
 	}
 

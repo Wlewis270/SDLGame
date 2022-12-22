@@ -25,7 +25,7 @@ public:
 	bool TestBlockCollision(Object* ent, Object* ent2);
 	void SpawnEnemy(Enemy* enemy);
 	bool EnemyOnScreen();
-
+	void DeleteEnemy(Object* enemy);
 private:
 	Game(StateManager* stateManager);
 	Game(const Game&) = delete;
@@ -36,8 +36,8 @@ private:
 	InputManager* game_inputmanager;
 	Visualisation* game_visualisation;
 	Player* game_player;
-	Enemy* game_left_enemy[4];
-	Enemy* game_right_enemy[4];
+	Enemy* game_enemy;
+	Enemy* game_enemy2;
 	std::vector<Enemy*> game_enemies;
 	SDL_Rect* game_rect;
 	SDL_Rect* Ent_rect;

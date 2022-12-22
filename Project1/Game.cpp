@@ -30,12 +30,22 @@ void Game::Update()
 	
 	if (EnemyOnScreen() == false)
 	{
-		game_enemies.push_back(game_left_enemy[0]);
-		game_enemies.push_back(game_right_enemy[0]);
+		game_enemies.push_back(game_enemy);
+		
+		game_enemies.push_back(game_enemy2);
 
 		SpawnEnemy(game_enemies[0]);
 		SpawnEnemy(game_enemies[1]);
 	}
+	
+	else
+	{
+		for (int i = 0; i < game_enemies.size(); i++)
+		{
+			game_enemies[i]->Update(game_player);
+		}
+	}
+	
 
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
 	{
@@ -60,12 +70,10 @@ void Game::Render()
 			game_enemies[i]->Render();
 		}
 
+		SDL_RenderPresent(game_renderer);
+		SDL_Delay(1000 / 60);
+
 	}
-
-	SDL_RenderPresent(game_renderer);
-	SDL_Delay(1000 / 60);
-
-	
 }
 
 bool Game::IsGameRunning()
@@ -88,14 +96,8 @@ void Game::Initialise()
 
 	game_inputmanager = new InputManager;
 	game_visualisation->Initialise(game_renderer);
-
-	for (int i = 0; i < 4; i++) {
-		game_left_enemy[i] = new Enemy("Enemy", 100, 5, 0);
-	}
-	for (int i = 0; i < 4; i++) {
-		game_right_enemy[i] = new Enemy("Enemy", 100, 5, 1280);
-	}
-
+	game_enemy = new Enemy("", 100, 5, 1000);
+	game_enemy2 = new Enemy("", 100, 5, 0);
 	game_player = new Player("Player",100, 5, game_inputmanager);
 	game_player->Initialise();
 }
@@ -182,6 +184,11 @@ bool Game::EnemyOnScreen()
 		return false;
 	}
 	return true;
+}
+
+void Game::DeleteEnemy(Object* enemy)
+{
+	delete enemy;
 }
 
 Game::Game(StateManager* stateManager) :State(stateManager)

@@ -43,11 +43,7 @@ void Bullet::Update()
 bool Bullet::Collision()
 {
     Object* bullet_collision = ent_game->CheckCollisions(this);
-    if (bullet_collision != nullptr && bullet_collision != ent_player)
-    {
-        ent_game->DeleteEnemy(bullet_collision);
-        return true;
-    }
-    return false;
+    return  bullet_collision != nullptr && bullet_collision != ent_player;
+    
 }
 

@@ -118,6 +118,12 @@ Object* Game::CheckCollisions(Object* ent)
 		for (int i = 0; i < game_enemies.size(); i++) {
 			if (TestBlockCollision(ent, game_enemies[i]))
 			{
+				if (ent->Getname() == "Bullet")
+				{
+					Object* temp = game_enemies[i];
+					delete game_enemies[i];
+					return temp;
+				}
 				return game_enemies[i];
 			}
 		}
@@ -129,7 +135,6 @@ Object* Game::CheckCollisions(Object* ent)
 				return game_player;
 			}
 		}
-		
 		return nullptr;
 	}
 }

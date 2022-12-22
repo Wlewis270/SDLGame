@@ -15,15 +15,9 @@ Game* Game::init(StateManager* stateManager)
 {
 	if (s_instance == nullptr)
 	{
-		s_instance = new Game(stateManager);
+		s_instance = new Game;
 		return s_instance;
 	}
-	return s_instance;
-}
-
-Game* Game::Get()
-{
-	
 
 	return s_instance;
 }
@@ -39,8 +33,8 @@ void Game::Update()
 		game_enemies.push_back(game_left_enemy[0]);
 		game_enemies.push_back(game_right_enemy[0]);
 
-		game_enemies[0]->Initialise();
-		game_enemies[1]->Initialise();
+		SpawnEnemy(game_enemies[0]);
+		SpawnEnemy(game_enemies[1]);
 	}
 
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
@@ -49,7 +43,7 @@ void Game::Update()
 		SDL_Quit();
 	}
 
-	
+	Render();
 
 }
 
@@ -58,9 +52,20 @@ void Game::Render()
 	SDL_RenderClear(game_renderer);
 	SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 255);
 	game_player->Render();
+	
+	if (game_enemies.size() > 0)
+	{
+		for (int i = 0; i < game_enemies.size(); i++)
+		{
+			game_enemies[i]->Render();
+		}
+
+	}
 
 	SDL_RenderPresent(game_renderer);
 	SDL_Delay(1000 / 60);
+
+	
 }
 
 bool Game::IsGameRunning()
@@ -172,7 +177,11 @@ void Game::SpawnEnemy(Enemy* enemy)
 
 bool Game::EnemyOnScreen()
 {
-	return false;
+	if (game_enemies.size() == 0)
+	{
+		return false;
+	}
+	return true;
 }
 
 Game::Game(StateManager* stateManager) :State(stateManager)

@@ -187,3 +187,8 @@ bool Game::EnemyOnScreen()
 Game::Game(StateManager* stateManager) :State(stateManager)
 {
 }
+
+Game* Game::Get()
+{
+	return s_instance;
+}

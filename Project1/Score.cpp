@@ -35,7 +35,7 @@ void Score::Render()
 void Score::Initialise()
 {
 
-	TTF_Font* Sans = TTF_OpenFont("Sans.ttf", 24);
+	TTF_Font* Sans = TTF_OpenFont(".\\font\\Mario-Kart-DS.ttf", 24);
 	SDL_Color White = { 255, 255, 255 };
 	surfaceScore = new SDL_Surface;
 	surfaceScore =TTF_RenderText_Solid(Sans, m_Score, White);

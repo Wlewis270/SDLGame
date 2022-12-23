@@ -13,12 +13,13 @@ public:
 	std::string Getname();
 	void Initialise();
 	void Update();
-	void CreateBullet();
+	void CreateBullet(std::string dir);
 	void Render();
 private:
 	InputManager* ent_input_manager;
 	Game* ent_game = nullptr;
 	Bullet* ent_bullet;
 	bool bullet_deleted;
+	std::string direction;
 };
 

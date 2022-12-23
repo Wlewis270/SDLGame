@@ -21,12 +21,12 @@ std::string Bullet::Getname()
 	return "Bullet";
 }
 
-void Bullet::Initialise()
+void Bullet::Initialise(std::string dir)
 {
     ent_visualisation = Visualisation::Get();
     ent_rect = new SDL_Rect;
     ent_game = Game::Get();
-    
+    direction = dir;
     ent_rect->x = ent_player->GetLocation()->x;
     ent_rect->y = ent_player->GetLocation()->y;
     ent_rect->h = 25;
@@ -37,7 +37,15 @@ void Bullet::Initialise()
 
 void Bullet::Update()
 {
-    ent_rect->x = ent_rect->x + 6;
+    if (direction == "Right")
+    {
+        ent_rect->x = ent_rect->x + 6;
+    }
+    else
+    {
+        ent_rect->x = ent_rect->x - 6;
+    }
+    
 }
 
 bool Bullet::Collision()

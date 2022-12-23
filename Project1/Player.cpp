@@ -9,6 +9,7 @@
 Player::Player(std::string Name, int maxhp, int attackvalue, InputManager*im):Entity(Name,maxhp,attackvalue)
 {
     ent_input_manager = im;
+	direction = "Right";
 }
 
 std::string Player::Getname()
@@ -39,16 +40,18 @@ void Player::Update()
 	if (ent_input_manager->GetKeyHeld(SDLK_d))
 	{
 		ent_rect->x = ent_rect->x + 5;
+		direction = "Right";
 	}
 
 	if (ent_input_manager->GetKeyHeld(SDLK_a))
 	{
 		ent_rect->x = ent_rect->x - 5;
+		direction = "Left";
 	}
 
 	if (ent_input_manager->GetKeyDown(SDLK_SPACE))
 	{
-		CreateBullet();
+		CreateBullet(direction);
 	}
 	
 	if (bullet_deleted == false)
@@ -79,13 +82,13 @@ void Player::Update()
 	
 }
 
-void Player::CreateBullet()
+void Player::CreateBullet(std::string dir)
 {
 	if (bullet_deleted == true)
 	{
 		bullet_deleted = false;
 		ent_bullet = new Bullet(this);
-		ent_bullet->Initialise();
+		ent_bullet->Initialise(dir);
 	}
 }
 

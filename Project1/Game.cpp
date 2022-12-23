@@ -9,6 +9,7 @@
 #include "Object.h"
 #include <vector>
 
+
 Game* Game::s_instance = nullptr;
 
 Game* Game::init(StateManager* stateManager)
@@ -93,7 +94,6 @@ void Game::Initialise()
 		SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_OPENGL);
 
 	game_renderer = SDL_CreateRenderer(game_window, -1, 0);
-
 	game_inputmanager = new InputManager;
 	game_visualisation->Initialise(game_renderer);
 	game_enemy = new Enemy("", 100, 5, 1000);
@@ -118,11 +118,13 @@ Object* Game::CheckCollisions(Object* ent)
 		for (int i = 0; i < game_enemies.size(); i++) {
 			if (TestBlockCollision(ent, game_enemies[i]))
 			{
-				if (ent->Getname() == "Bullet")
+				if (ent != game_player)
 				{
 					Object* temp = game_enemies[i];
-					delete game_enemies[i];
+					game_enemies.erase(game_enemies.begin() + i);
+					SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 0);
 					return temp;
+					
 				}
 				return game_enemies[i];
 			}

@@ -1,4 +1,5 @@
 #pragma once
+#include<iostream>
 class InputManager;
 class Visualisation;
 class SDL_Renderer;
@@ -17,12 +18,13 @@ public:
 	void Render();
 	void Initialise();
 	void Uninitialise();
-	const char* GetScore();
-	void SetScore(const char* score);
+	int GetScore();
+	void SetScore(int score);
 	
 private:
 	static Score* s_instance;
-	const char* m_Score;
+	int m_Score;
+	std::string conver;
 	SDL_Renderer* Score_renderer;
 	SDL_Window* Score_window;
 	InputManager* Score_inputmanager;

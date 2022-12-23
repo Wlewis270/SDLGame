@@ -135,18 +135,20 @@ Object* Game::CheckCollisions(Object* ent)
 					enemies_dead = enemies_dead + 1;
 					return temp;
 				}
+				player_health = player_health + 1;
 				return game_enemies[i];
+			}
+
+			if (ent == game_enemies[i])
+			{
+				if (TestBlockCollision(ent, game_player))
+				{
+					return game_player;
+				}
+				return nullptr;
 			}
 		}
 
-		if (ent != game_player)
-		{
-			if (TestBlockCollision(ent, game_player))
-			{
-				player_health = player_health + 1;
-				return game_player;
-			}
-		}
 		return nullptr;
 	}
 }

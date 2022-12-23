@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 	statestuf.Initialise();
 	Score* score = score->Get();
 
-	score->SetScore("19");
+	score->SetScore(9);
 	score->Initialise();
 	while (1)
 	{

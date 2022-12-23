@@ -41,10 +41,11 @@ void Score::Initialise()
 		SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_OPENGL);
 
 	Score_renderer = SDL_CreateRenderer(Score_window, -1, 0);
-	TTF_Font* Sans = TTF_OpenFont(".\\font\\Mario-Kart-DS.ttf", 24);
+	TTF_Font* Sa = TTF_OpenFont(".\\font\\Mario-Kart-DS.ttf", 24);
 	SDL_Color White = { 255, 255, 255 };
 	surfaceScore = new SDL_Surface;
-	surfaceScore =TTF_RenderText_Solid(Sans, m_Score, White);
+	conver = std::to_string(m_Score);
+	surfaceScore =TTF_RenderText_Solid(Sa, conver.c_str(), White);
 	ScoreTexture = SDL_CreateTextureFromSurface(Score_renderer, surfaceScore);
 
 	Score_rect = new SDL_Rect; //create a rect
@@ -61,12 +62,12 @@ void Score::Uninitialise()
 	SDL_DestroyTexture(ScoreTexture);
 }
 
-const char* Score::GetScore()
+int Score::GetScore()
 {
 	return m_Score;
 }
 
-void Score::SetScore(const char* score)
+void Score::SetScore(int score)
 {
 	m_Score = score;
 }

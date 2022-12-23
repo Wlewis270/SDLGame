@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "Object.h"
 #include <vector>
+#include "StateManager.h"
 
 
 Game* Game::s_instance = nullptr;
@@ -49,12 +50,12 @@ void Game::Update()
 
 	if (enemies_dead == 20)
 	{
-
+		m_stateManager->SetState(GAMEWIN);
 	}
 
 	if (player_health == 3)
 	{
-
+		m_stateManager->SetState(GAMEOVER);
 	}
 
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))

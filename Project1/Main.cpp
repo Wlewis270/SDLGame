@@ -12,6 +12,7 @@ int main(int argc, char* argv[])
 
 	score->SetScore(9);
 	score->Initialise();
+	
 	while (1)
 	{
 		score->Update();

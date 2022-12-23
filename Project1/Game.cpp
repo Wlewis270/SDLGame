@@ -52,6 +52,11 @@ void Game::Update()
 
 	}
 
+	if (player_health == 3)
+	{
+
+	}
+
 	if (game_inputmanager->GetKeyDown(SDLK_ESCAPE))
 	{
 		Uninitialise();
@@ -97,6 +102,7 @@ void Game::Initialise()
 	game_window = SDL_CreateWindow("Game Window", SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_OPENGL);
 	enemies_dead = 0;
+	player_health = 0;
 	game_renderer = SDL_CreateRenderer(game_window, -1, 0);
 	game_inputmanager = new InputManager;
 	game_visualisation->Initialise(game_renderer);
@@ -126,10 +132,8 @@ Object* Game::CheckCollisions(Object* ent)
 				{
 					Object* temp = game_enemies[i];
 					game_enemies.erase(game_enemies.begin() + i);
-					SDL_SetRenderDrawColor(game_renderer, 0, 0, 255, 0);
 					enemies_dead = enemies_dead + 1;
 					return temp;
-					
 				}
 				return game_enemies[i];
 			}
@@ -139,6 +143,7 @@ Object* Game::CheckCollisions(Object* ent)
 		{
 			if (TestBlockCollision(ent, game_player))
 			{
+				player_health = player_health + 1;
 				return game_player;
 			}
 		}

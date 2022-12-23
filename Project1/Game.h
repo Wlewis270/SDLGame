@@ -45,5 +45,6 @@ private:
 	int image_id;
 	bool enemies_on_screen;
 	int enemies_dead;
+	int player_health;
 };
 

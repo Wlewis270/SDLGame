@@ -44,5 +44,6 @@ private:
 	SDL_Rect* Ent_rect2;
 	int image_id;
 	bool enemies_on_screen;
+	int enemies_dead;
 };
 

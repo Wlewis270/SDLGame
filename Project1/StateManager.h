@@ -1,7 +1,7 @@
 #pragma once
 #include"State.h"
 
-enum States { START, GAME, GAMEOVER };
+enum States { START, GAME, GAMEOVER, GAMEWIN };
 class StateManager{
 
 public:
@@ -14,6 +14,6 @@ public:
 
 private:
 
-	State* m_States[3];
+	State* m_States[4];
 	State* m_currentState;
 };

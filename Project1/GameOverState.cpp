@@ -17,7 +17,12 @@ void GameOverState::Update()
 	Gameover_inputmanager->Update();
 	if (Gameover_inputmanager->GetKeyDown(SDLK_g))
 	{
-		m_stateManager->SetState(GAME);
+		m_stateManager->SetState(START);
+	}
+	if (Gameover_inputmanager->GetKeyDown(SDLK_ESCAPE))
+	{
+		Uninitialise();
+		SDL_Quit();
 	}
 }
 

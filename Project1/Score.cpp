@@ -20,6 +20,7 @@ Score* Score::Get()
 void Score::Update()
 {
 	Render();
+	
 }
 
 void Score::Render()
@@ -27,7 +28,6 @@ void Score::Render()
 	SDL_RenderClear(Score_renderer);
 	SDL_SetRenderDrawColor(Score_renderer, 0, 0, 0, 255);
 	SDL_RenderCopy(Score_renderer, ScoreTexture, NULL, Score_rect);
-	
 	SDL_RenderPresent(Score_renderer);
 	
 
@@ -45,7 +45,7 @@ void Score::Initialise()
 	SDL_Color White = { 255, 255, 255 };
 	surfaceScore = new SDL_Surface;
 	conver = std::to_string(m_Score);
-	surfaceScore =TTF_RenderText_Solid(Sa, conver.c_str(), White);
+	surfaceScore=TTF_RenderText_Solid(Sa, conver.c_str(), White);
 	ScoreTexture = SDL_CreateTextureFromSurface(Score_renderer, surfaceScore);
 
 	Score_rect = new SDL_Rect; //create a rect

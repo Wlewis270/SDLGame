@@ -15,7 +15,7 @@ GameOverState::~GameOverState()
 void GameOverState::Update()
 {
 	Gameover_inputmanager->Update();
-	if (Gameover_inputmanager->GetKeyDown(SDLK_s))
+	if (Gameover_inputmanager->GetKeyDown(SDLK_g))
 	{
 		m_stateManager->SetState(GAME);
 	}
